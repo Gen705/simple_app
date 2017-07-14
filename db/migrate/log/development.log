@@ -165,7 +165,7 @@ Completed 500 Internal Server Error in 408ms (ActiveRecord: 0.0ms)
 
   
 ActionView::Template::Error (undefined local variable or method `help_path' for #<#<Class:0x007f9cbd8bb620>:0x007f9cbd8b8b00>
-Did you mean?  helf_path):
+Did you mean?  help_path):
     4:     <nav>
     5:       <ul class="nav navbar-nav navbar-right">
     6:         <li><%= link_to "Home",    root_path %></li>
