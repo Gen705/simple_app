@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
-  def show
+   def show
     @user = User.find(params[:id])
-    redirect_to root_url and return unless @user.activated?
+    @micropost = @user.microposts.paginate(page: params[:page])
   end
 
   def index
