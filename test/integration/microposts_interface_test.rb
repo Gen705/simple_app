@@ -13,16 +13,16 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'input[type=submit]'
     assert_select 'input[type=file]'
     # Invalid submission
-    post microposts_path, micropost: { content: "" }
+    post microposts_path, params: { micropost: { content: " "} }
     assert_select 'div#error_explanation'
     # Valid submission
     content = "This micropost really ties the room together"
     picture = fixture_file_upload('/home/gen/Downloads/E-T.jpg', 'image/jpg')
     assert_difference 'Micropost.count', 1 do
-      post microposts_path, micropost: { content: content, picture: picture }
+      post microposts_path, params: { micropost: { content: content, picture: picture } }
     end
-    micropost=assigns(:micropost)
-    assert micropost.picture?
+    @micropost=assigns(:micropost)
+    assert @micropost.picture?
     follow_redirect!
     assert_match content, response.body
     # Delete a post.
